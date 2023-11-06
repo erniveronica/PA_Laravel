@@ -25,3 +25,7 @@ Route::get('/admin', [AuthController::class, 'show'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 // melakukan logout
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
+
+Route::get('/', function () {
+    return view('layouts.user');
+});

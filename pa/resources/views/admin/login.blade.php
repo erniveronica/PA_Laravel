@@ -19,7 +19,7 @@
             <div class="authentication-inner">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="mb-2">Welcome to <br> Samarinda Food Finder 👋</h4>
+                        <h4 class="mb-2">Welcome To <br> Samarinda Food Finder 👋</h4>
                         <p class="mb-4">Silakan login menggunakan akun anda</p>
 
                         @if ($errors->any())
