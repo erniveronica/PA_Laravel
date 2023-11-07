@@ -18,7 +18,11 @@ use Illuminate\Support\Facades\Route;
 // HALAMAN ADMIN
 
 //menampilkan halaman dashboard (wajib login)
-Route::get('/dashboard', [AdminController::class, '__invoke'])->middleware('auth');
+Route::get('/dashboard', [AdminController::class, 'index'])->middleware('auth');
+
+// menampilkan halaman dari check inputan user
+Route::get('/tambahData', [AdminController::class, 'tambahData'])->middleware('auth');
+
 //menampilkan halaman login
 Route::get('/admin', [AuthController::class, 'show'])->name('login');
 // memproses data login
