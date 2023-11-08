@@ -15,7 +15,11 @@ class AdminController extends Controller
         ]);
     }
 
-    public function tambahData() {
-        return view('admin.tambahData', ['user' => auth()->user()]);
+    // REGISTRASI
+    public function tambahAkun() {
+        // menampilkan halaman tambah akun dan mengirim data pengguna
+        return view('admin.register', [
+            'user' => auth()->user()
+        ]);
     }
 }

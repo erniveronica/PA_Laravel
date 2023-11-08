@@ -33,38 +33,73 @@
 
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
-                    <a href="index.html" class="app-brand-link"><span class="fw-bolder ms-2">Samarinda Food Finder</span></a>
+                    <a href="/dashboard" class="app-brand-link"><span class="fw-bolder ms-2">Samarinda Food Finder</span></a>
                     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none"><i class="bx bx-chevron-left bx-sm align-middle"></i></a>
                 </div>
 
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
                     <li class="menu-item">
-                        <a href="/dashboard" class="menu-link"><i class="menu-icon tf-icons bx bx-home-circle"></i><div data-i18n="Analytics">Dashboard</div></a>
+                        <a href="/dashboard" class="menu-link"><i class="menu-icon tf-icons bx bx-home"></i><div data-i18n="Analytics">Dashboard</div></a>
                     </li>
 
-                    <!-- Layouts -->
-                    <li class="menu-item">
-                        <a href="/tambahData" class="menu-link"><i class="menu-icon tf-icons bx bx-layout"></i><div data-i18n="Layouts">Tambah Data</div>
+                    <!-- Kelola Data -->
+                    <li class="menu-header small text-uppercase">
+                        <span class="menu-header-text">KELOLA DATA</span>
+                      </li>
+                        <!-- Tempat Makanan-->
+                      <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bx-map"></i>
+                            <div data-i18n="Basic">Tempat Makan</div>
+                          </a>
+
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="/lihat_tempat" class="menu-link">Lihat Data</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="/tambah_tempat" class="menu-link">Tambah Data</a>
+                            </li>
+                        </ul>
+                      </li>
+
+                        <!-- Menu Makanan-->
+                      <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bx-food-menu"></i>
+                            <div data-i18n="Basic">Menu Makanan</div>
                         </a>
 
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a href="layouts-without-menu.html" class="menu-link"><div data-i18n="Without menu">Without menu</div></a>
+                                <a href="/lihat_menu" class="menu-link">Lihat Data</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="/tambah_menu" class="menu-link">Tambah Data</a>
                             </li>
                         </ul>
-                    </li>
 
-                    <!-- Components -->
-                    <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
-                    <!-- Cards -->
-                    <li class="menu-item {{ Request::is('admin_barang') ? 'active' : ' '}}">
-                        <a href="/dashboard" class="menu-link"><i class="menu-icon tf-icons bx bx-collection"></i><div data-i18n="Basic">Cards</div></a>
-                    </li>
+                      </li>
 
-                    <li class="menu-item">
-                        <a href="icons-boxicons.html" class="menu-link"><i class="menu-icon tf-icons bx bx-crown"></i><div data-i18n="Boxicons">Boxicons</div></a>
-                    </li>
+                    <!-- Akun-->
+                    <li class="menu-header small text-uppercase">
+                        <span class="menu-header-text">AKUN</span>
+                      </li>
+                      <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                          <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+                          <div data-i18n="Authentications">Akun</div>
+                        </a>
+
+
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="/tambahAkun" class="menu-link">Tambah Akun</a>
+                            </li>
+                        </ul>
+
+                      </li>
                 </ul>
             </aside>
             <!-- / Menu -->

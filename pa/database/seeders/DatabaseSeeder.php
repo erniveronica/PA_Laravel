@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,20 +16,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
-        User::create([
-            'name' => 'Erni Veronica Sidabutar',
-            'email' => '2109116029@gmail.com',
-            'password' => Hash::make('2109116029')
-        ]);
-
-        User::create([
-            'name' => 'Nur Avivah',
-            'email' => '2109116010@gmail.com',
-            'password' => Hash::make('2109116010')
-        ]);
+        // DB::table('users')->truncate();
+        $this->call(UsersTableSeeder::class);
     }
-
     // run terminal -> php artisan db:seed
     // fungsi database sender -> memasukan data ke database secara otomatis (pengembang mengisi database dengan default/sampel)
 }

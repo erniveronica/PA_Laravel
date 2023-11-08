@@ -42,4 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function tempat()
+    {
+        return $this->hasMany(Tempat::class, 'admin_id', 'id');
+    }
 }

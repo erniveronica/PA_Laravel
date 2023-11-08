@@ -12,7 +12,7 @@
             <div class="d-flex align-items-end row">
                 <div class="col-sm-7">
                 <div class="card-body">
-                    <h5 class="card-title text-primary">Selamat Datang <br> {{ $user->name }} 👋🏼</h5>
+                    <h5 class="card-title text-primary">Selamat Datang {{ $user->name }} 👋🏼</h5>
                     <p class="mb-4">
                     Sebagai Admin,  <span class="fw-bold">Anda memiliki tanggung jawab penting dalam pengelolaan data.</span>
                     Oleh karena itu, berhati-hatilah dalam mengelola data.

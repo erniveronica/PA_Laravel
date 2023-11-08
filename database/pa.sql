@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Nov 2023 pada 17.54
+-- Waktu pembuatan: 08 Nov 2023 pada 08.03
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -24,17 +24,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `failed_jobs`
+-- Struktur dari tabel `menu`
 --
 
-CREATE TABLE `failed_jobs` (
+CREATE TABLE `menu` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) NOT NULL,
-  `connection` text NOT NULL,
-  `queue` text NOT NULL,
-  `payload` longtext NOT NULL,
-  `exception` longtext NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `admin_id` bigint(20) UNSIGNED NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `harga` int(11) NOT NULL,
+  `tempat_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -54,22 +54,10 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2019_12_14_000001_create_personal_access_tokens_table', 1);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `password_reset_tokens`
---
-
-CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+(9, '2014_10_12_000000_create_users_table', 1),
+(10, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(11, '2023_11_08_041414_create_tempat_table', 1),
+(12, '2023_11_08_041451_create_menu_table', 1);
 
 -- --------------------------------------------------------
 
@@ -86,6 +74,26 @@ CREATE TABLE `personal_access_tokens` (
   `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tempat`
+--
+
+CREATE TABLE `tempat` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `admin_id` bigint(20) UNSIGNED NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `alamat` varchar(255) NOT NULL,
+  `jam_buka` varchar(255) NOT NULL,
+  `jam_tutup` varchar(255) NOT NULL,
+  `gambar` varchar(255) NOT NULL,
+  `link_maps` varchar(255) NOT NULL,
+  `kontak` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -112,19 +120,21 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Erni Veronica Sidabutar', '2109116029@gmail.com', NULL, '$2y$12$xi5nL4qRYpLFKMkqhoLV2uT4Kd8G6Kdce7DXiiiaQFZf8dvMjoMeS', NULL, '2023-11-04 20:22:58', '2023-11-04 20:22:58'),
-(2, 'Nur Avivah', '2109116010@gmail.com', NULL, '$2y$12$azW6htnf.PBKPEIyWOMejujqwpL9fjkjTZRRAIdY5NBwJdPtuEyNW', NULL, '2023-11-04 20:22:58', '2023-11-04 20:22:58');
+(1, 'Admin', 'admin@gmail.com', NULL, '$2y$12$HmzDj/OwEIzfuNnkRd1Gcux3k8lVkVsySiD6v4MdVb6psmKyRHBha', NULL, '2023-11-07 23:03:03', '2023-11-07 23:03:03'),
+(2, 'Erni Veronica Sidabutar', 'vero@gmail.com', NULL, '$2y$12$WCmy4RIUbnIBZC9i6lIms.sgTkd9pUpLTZe5h70bs2YCnRJmQBQLm', NULL, '2023-11-07 23:03:03', '2023-11-07 23:03:03'),
+(3, 'Nur Avivah', 'avivah@gmail.com', NULL, '$2y$12$Jeaq1lT.13Yp9lg7ATfLvOkqtm6prTjS/1I7lCcyZRA3jN6L28Oa2', NULL, '2023-11-07 23:03:04', '2023-11-07 23:03:04');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `failed_jobs`
+-- Indeks untuk tabel `menu`
 --
-ALTER TABLE `failed_jobs`
+ALTER TABLE `menu`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+  ADD KEY `menu_admin_id_foreign` (`admin_id`),
+  ADD KEY `menu_tempat_id_foreign` (`tempat_id`);
 
 --
 -- Indeks untuk tabel `migrations`
@@ -133,18 +143,20 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `password_reset_tokens`
---
-ALTER TABLE `password_reset_tokens`
-  ADD PRIMARY KEY (`email`);
-
---
 -- Indeks untuk tabel `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indeks untuk tabel `tempat`
+--
+ALTER TABLE `tempat`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `tempat_nama_unique` (`nama`),
+  ADD KEY `tempat_admin_id_foreign` (`admin_id`);
 
 --
 -- Indeks untuk tabel `users`
@@ -158,16 +170,16 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT untuk tabel `failed_jobs`
+-- AUTO_INCREMENT untuk tabel `menu`
 --
-ALTER TABLE `failed_jobs`
+ALTER TABLE `menu`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `personal_access_tokens`
@@ -176,10 +188,33 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `tempat`
+--
+ALTER TABLE `tempat`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `menu`
+--
+ALTER TABLE `menu`
+  ADD CONSTRAINT `menu_admin_id_foreign` FOREIGN KEY (`admin_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `menu_tempat_id_foreign` FOREIGN KEY (`tempat_id`) REFERENCES `tempat` (`id`) ON DELETE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `tempat`
+--
+ALTER TABLE `tempat`
+  ADD CONSTRAINT `tempat_admin_id_foreign` FOREIGN KEY (`admin_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
