@@ -40,9 +40,19 @@ Route::get('/dashboard', [AdminController::class, 'index'])->middleware('auth');
 
 // 2. Tempat Makanan
 // menampilkan halaman tempat makanan (lihat data) --> blm fix controllernya blm
-Route::get('/lihat_tempat', [TempatController::class, 'show'])->middleware('auth');
+Route::get('/lihat_tempat', [TempatController::class, 'index'])->name('admin.tempat.index');
 // menampilkan halaman tambah tempat makanan (create data)
 Route::get('/tambah_tempat', [TempatController::class, 'create'])->middleware('auth');
+Route::post('/tambah_tempat', [TempatController::class, 'store'])->middleware('auth');
+
+// halaman edit tempat makan
+Route::get('/edit_tempat/{id}', [TempatController::class, 'halamanEdit'])->middleware('auth');
+Route::post('/edit_tempat/{id}', [TempatController::class, 'update'])->middleware('auth');
+
+// halaman hapus tempat makan
+Route::get('/hapus_tempat/{id}', [TempatController::class, 'destroy'])->middleware('auth');
+
+
 
 // 3. Menu Makanan
 // menampilkan halaman menu makanan (lihat data) --> blm fix controllernya blm
@@ -56,5 +66,3 @@ Route::get('/tambah_menu', [MenuController::class, 'create'])->middleware('auth'
 Route::get('/', function () {
     return view('layouts.user');
 });
-
-

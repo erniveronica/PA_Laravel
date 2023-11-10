@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tempat;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
@@ -31,6 +32,9 @@ class MenuController extends Controller
     public function store(Request $request)
     {
         //
+      
+        
+
     }
 
     /**
