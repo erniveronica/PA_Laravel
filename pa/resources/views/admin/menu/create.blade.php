@@ -27,21 +27,22 @@
                             <div class="alert alert-success"> {{ session('success') }}</div>
                         @endif
 
-                        <form action="{{ url('controlerny') }}" method="POST">
+                        <form action="" method="POST">
                             @csrf
 
                             <div class="mb-3">
                                 <label class="form-label" for="alamat">Nama Tempat Makan:</label>
                                 <div class="input-group input-group-merge">
-                                    <select class="form-select" id="alamat" name="alamat" required>
-                                        <option value="" disabled selected>Pilih tempat makan</option>
-                                        <option value="COba"></option>
+                                    <select class="form-select" id="namaTempatMakan" name="namaTempatMakan" required>
+                                        @foreach ($tempat as $item)
+                                        <option value="{{$item->nama}}">{{$item->nama}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label" for="namaTempatMakan">Nama Menu Makan:</label>
+                                <label class="form-label" for="namaTempatMakan">Nama Menu Makanan:</label>
                                 <div class="input-group input-group-merge">
                                     <input type="text" name="nama" id="nama" class="form-control"
                                         required placeholder="Masukan nama menu makanan"/>
@@ -52,12 +53,12 @@
                                 <label class="form-label" for="harga">Harga:</label>
                                 <div class="input-group input-group-merge">
                                     <div class="input-group-text">Rp</div>
-                                    <input type="text" name="harga" id="harga" class="form-control" required placeholder="Masukan harga tanpa titik atau koma"/>
+                                    <input type="number" name="harga" id="harga" class="form-control" required placeholder="Masukan harga tanpa titik atau koma"/>
                                 </div>
                             </div>
 
                             <div class="d-grid gap-2 mb-3">
-                                <button class="btn btn-primary" type="button">Tambah Menu Makan</button>
+                                <button class="btn btn-primary" type="submit">Tambah Menu Makan</button>
                             </div>
                         </form>
                     </div>

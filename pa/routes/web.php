@@ -56,9 +56,17 @@ Route::get('/hapus_tempat/{id}', [TempatController::class, 'destroy'])->middlewa
 
 // 3. Menu Makanan
 // menampilkan halaman menu makanan (lihat data) --> blm fix controllernya blm
-Route::get('lihat_menu', [TempatController::class, 'show'])->middleware('auth');
-// menampilkan halaman tambah menu makanan (create data)
-Route::get('/tambah_menu', [MenuController::class, 'create'])->middleware('auth');
+Route::get('lihat_menu', [MenuController::class, 'index'])->middleware('auth')->name('admin.menu.index');
+// menampilkan halaman dan tambah menu makanan (create data)
+Route::get('/tambah_menu', [MenuController::class, 'tempatMakan'])->middleware('auth');
+Route::post('/tambah_menu', [MenuController::class, 'store'])->middleware('auth');
+
+// Halaman edit menu makanan
+Route::get('/edit_menu/{id}', [MenuController::class, 'edit'])->middleware('auth');
+Route::post('/edit_menu/{id}', [MenuController::class, 'update'])->middleware('auth');
+
+// hapus menu makanan
+Route::get('/hapus_menu/{id}', [MenuController::class, 'destroy'])->middleware('auth');
 
 
 
