@@ -32,8 +32,7 @@
         <div class="top-bar row gx-0 align-items-center d-none d-lg-flex"></div>
 
         <nav class="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
-            <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
-                <h1 class="fw-bold text-primary m-0">F<span class="text-secondary">oo</span>dy</h1>
+            <a href="/" class="navbar-brand ms-4 ms-lg-0">
             </a>
             <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -42,12 +41,6 @@
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
                     <a href="/" class="nav-item nav-link active">Home</a>
                     <a href="/products" class="nav-item nav-link">Products</a>
-                    <a href="contact.html" class="nav-item nav-link">Contact Us</a>
-                </div>
-                <div class="d-none d-lg-flex ms-2">
-                    <a class="btn-sm-square bg-white rounded-circle ms-3" href="">
-                        <small class="fa fa-search text-body"></small>
-                    </a>
                 </div>
             </div>
         </nav>
@@ -65,7 +58,7 @@
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
-                    <h1 class="fw-bold text-primary mb-4">F<span class="text-secondary">oo</span>dy</h1>
+                    <h4 class="fw-bold text-primary mb-4">Samarinda<span class="text-secondary">Food</span>Finder</h4>
                     <p>Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed
                         stet lorem sit clita</p>
                     <div class="d-flex pt-2">

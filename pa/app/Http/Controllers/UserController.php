@@ -37,7 +37,6 @@ class UserController extends Controller
             $result = Tempat::select('*')
                 ->where('id', $id)
                 ->get();
-                // return response()->json($result);
             return view("detail", [
                 'result' => $result
             ]);
@@ -46,5 +45,25 @@ class UserController extends Controller
                 'result' => $result
             ]);
         }
+    }
+    public function search(Request $request)
+    {
+        $keyword = $request->input('cariNama');
+        $tempat = Tempat::where('nama', 'like', "%" . $keyword . "%")->get();
+
+        // return response()->json($tempat);
+
+        if ($tempat->isEmpty()) {
+            return view("products", [
+            ]);
+        } else {
+            return view('products', [
+                'tempat' => $tempat
+            ]);
+        }
+
+        // return view('products', [
+        //     'tempat' => $tempat
+        // ]);
     }
 }

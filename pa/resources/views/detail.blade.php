@@ -35,7 +35,6 @@
           <div class="my-5">
               <table class="table ">
                   <thead>
-                      <th>ID</th>
                       <th>Menu Makanan</th>
                       <th>Harga</th>
 
@@ -43,7 +42,6 @@
                   <tbody>
                       @foreach ($result as $item)
                           <tr>
-                              <td>{{ $item->id }}</td>
                               <td>{{ $item->nama_menu }}</td>
                               <td>{{ $item->harga }}</td>
 

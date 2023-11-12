@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2023 at 07:08 PM
+-- Generation Time: Nov 12, 2023 at 02:03 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -42,9 +42,13 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id`, `admin_id`, `nama`, `harga`, `tempat_id`, `created_at`, `updated_at`) VALUES
-(1, 3, 'ayam goreng', 15000, 4, '2023-11-11 06:44:31', '2023-11-11 10:05:18'),
 (6, 3, 'lalapan bebek', 18000, 5, '2023-11-11 07:18:57', '2023-11-11 10:05:38'),
-(7, 3, 'Nasi Uduk Lalapan', 14000, 5, '2023-11-11 10:07:37', '2023-11-11 10:07:37');
+(7, 3, 'Nasi Uduk Lalapan', 14000, 5, '2023-11-11 10:07:37', '2023-11-11 10:07:37'),
+(8, 3, 'nasi campur', 8000, 7, '2023-11-11 10:23:28', '2023-11-11 10:23:28'),
+(9, 3, 'Nasi campur lauk ayam bumbu', 10000, 7, '2023-11-11 19:54:48', '2023-11-11 19:54:48'),
+(10, 3, 'black coffee', 30000, 4, '2023-11-11 19:58:21', '2023-11-11 19:58:21'),
+(11, 3, 'Brownies', 27000, 4, '2023-11-11 20:00:51', '2023-11-11 20:00:51'),
+(12, 3, 'Americano', 25000, 9, '2023-11-12 03:48:57', '2023-11-12 03:48:57');
 
 --
 -- Indexes for dumped tables
@@ -66,7 +70,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables

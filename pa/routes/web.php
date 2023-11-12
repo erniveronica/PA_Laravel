@@ -81,3 +81,5 @@ Route::get('/', [UserController::class,'index']);
 Route::get('/products', [UserController::class,'showProduct']);
 // halaman detail tempat makan
 Route::get('/product-detail/{id}', [UserController::class,'showDetail']);
+
+Route::post('/products', [UserController::class,'search']);
