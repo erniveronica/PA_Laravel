@@ -74,6 +74,10 @@ Route::get('/hapus_menu/{id}', [MenuController::class, 'destroy'])->middleware('
 
 
 
-// HALAMAN USER (BLOM FIX)
-Route::get('/', [UserController::class,'index'])->middleware('auth');
-Route::get('/products', [UserController::class,'showProduct'])->middleware('auth');
+// HALAMAN USER
+// halaman index
+Route::get('/', [UserController::class,'index']);
+// halaman lihat tempat makan
+Route::get('/products', [UserController::class,'showProduct']);
+// halaman detail tempat makan
+Route::get('/product-detail/{id}', [UserController::class,'showDetail']);

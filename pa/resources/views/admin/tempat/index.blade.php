@@ -60,6 +60,7 @@
                                                                     class="badge bg-label-secondary rounded-pill text-start">
                                                                     {{ $item->jam_buka }} - {{ $item->jam_tutup }}
                                                                 </span>
+                                                            
                                                             </div>
                                                             {{-- <p class="">Link Gmaps: {{ $item->link_maps }}</p> --}}
                                                             @if ($item->link_maps != null)
@@ -68,6 +69,7 @@
                                                             @else
                                                                 <div></div>
                                                             @endif
+                                                        
                                                             <p>{{ $item->kontak }}</p>
                                                             <p class="text-wrap">Dibuat pada: {{ $item->created_at }}</p>
                                                         </div>
