@@ -24,7 +24,12 @@
                             @endif
 
                             @if (session('success'))
-                                <div class="alert alert-success"> {{ session('success') }}</div>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                                {{-- <div class="alert alert-success"> </div> --}}
                             @endif
 
                         </div>
@@ -41,19 +46,19 @@
                             </thead>
                             <tbody>
                                 @foreach ($menu as $item)
-                                        <tr>
-                                            <td>{{ $item->id }}</td>
-                                            <td>{{ $item->nama_tempat }}</td>
-                                            <td>{{ $item->nama }}</td>
-                                            <td>{{ $item->harga }}</td>
-                                            <td> <a href="/edit_menu/{{ $item->id }}">
-                                                    <button class="btn-primary rounded-2">Edit</button>
-                                                </a>
-                                                <a href="/hapus_menu/{{ $item->id }}">
-                                                    <button class="btn-danger  rounded-2">Hapus</button>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $item->nama_tempat }}</td>
+                                        <td>{{ $item->nama }}</td>
+                                        <td>{{ $item->harga }}</td>
+                                        <td> <a href="/edit_menu/{{ $item->id }}">
+                                                <button class="btn-primary rounded-2">Edit</button>
+                                            </a>
+                                            <a href="/hapus_menu/{{ $item->id }}">
+                                                <button class="btn-danger  rounded-2">Hapus</button>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -64,4 +69,4 @@
         <!-- / Content -->
     </div>
 
-@endsection --}}
+@endsection

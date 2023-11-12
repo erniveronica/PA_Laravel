@@ -24,7 +24,20 @@
                                 </div>
                         @endforeach
                     </div> --}}
+                            <div class="card-body">
+                                @if ($errors->any())
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach ($errors->all() as $error)
+                                            {{ $error }}</li>
+                                        @endforeach
+                                    </div>
+                                @endif
 
+                                @if (session('success'))
+                                    <div class="alert alert-success"> {{ session('success') }}</div>
+                                @endif
+
+                            </div>
 
                             <div class="col-12 mb-4 mt-4">
                                 <div class="row mb-5">
@@ -48,19 +61,25 @@
                                                                     {{ $item->jam_buka }} - {{ $item->jam_tutup }}
                                                                 </span>
                                                             </div>
-                                                            <a href="{{ $item->link_maps }}"  style="color: rgb(255, 182, 64)">Link Gmaps</a>
                                                             {{-- <p class="">Link Gmaps: {{ $item->link_maps }}</p> --}}
+                                                            @if ($item->link_maps != null)
+                                                                <a href="{{ $item->link_maps }}"
+                                                                    style="color: rgb(255, 182, 64)">Link Gmaps</a>
+                                                            @else
+                                                                <div></div>
+                                                            @endif
+                                                            <p>{{ $item->kontak }}</p>
                                                             <p class="text-wrap">Dibuat pada: {{ $item->created_at }}</p>
                                                         </div>
                                                     </div>
                                                     <div class="d-flex">
                                                         <div class="me-4">
-                                                            <a href="/edit_tempat/{{$item->id}}">
+                                                            <a href="/edit_tempat/{{ $item->id }}">
                                                                 <button class="btn-primary rounded-2">Edit</button>
                                                             </a>
                                                         </div>
                                                         <div>
-                                                            <a href="/hapus_tempat/{{$item->id}}">
+                                                            <a href="/hapus_tempat/{{ $item->id }}">
                                                                 <button class="btn-danger  rounded-2">Hapus</button>
                                                             </a>
                                                         </div>

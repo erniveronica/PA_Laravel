@@ -115,6 +115,6 @@ class MenuController extends Controller
     {
         //
         Menu::where('id', $id)->delete();
-        return redirect()->route('admin.menu.index');
+        return redirect()->route('admin.menu.index')->with('success', 'Data tempat berhasil dihapus');
     }
 }

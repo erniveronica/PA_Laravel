@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\TempatController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -68,9 +69,11 @@ Route::post('/edit_menu/{id}', [MenuController::class, 'update'])->middleware('a
 // hapus menu makanan
 Route::get('/hapus_menu/{id}', [MenuController::class, 'destroy'])->middleware('auth');
 
+// menghitung banyak data di database
+
+
 
 
 // HALAMAN USER (BLOM FIX)
-Route::get('/', function () {
-    return view('layouts.user');
-});
+Route::get('/', [UserController::class,'index'])->middleware('auth');
+Route::get('/products', [UserController::class,'showProduct'])->middleware('auth');
