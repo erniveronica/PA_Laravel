@@ -55,8 +55,10 @@ class UserController extends Controller
 
         if ($tempat->isEmpty()) {
             return view("products", [
+                'message' => 'Tidak ada yang sesuai dengan pencarian'
             ]);
-        } else {
+        }
+        else {
             return view('products', [
                 'tempat' => $tempat
             ]);
