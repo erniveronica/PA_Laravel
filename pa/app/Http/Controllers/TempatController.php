@@ -10,6 +10,11 @@ class TempatController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function count(){
+
+    }
+
     public function index()
     {
         //
@@ -19,9 +24,6 @@ class TempatController extends Controller
             'tempat' => $tempat
         ]);
     }
-
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -70,7 +72,7 @@ class TempatController extends Controller
         $tempatMakan->save();
         // Tempat::create($validateData);
 
-        return redirect()->route('admin.tempat.index');
+        return redirect()->route('admin.tempat.index')->with('success', 'Data tempat berhasil ditambah');
     }
 
     /**
@@ -108,7 +110,7 @@ class TempatController extends Controller
         //
         // return id. if not found, return error
         $tempatMakan = Tempat::findOrFail($id);
-        
+
 
         $tempatMakan->update([
             'nama' => $request->input('nama'),
@@ -119,27 +121,58 @@ class TempatController extends Controller
             'kontak' => $request->input('kontak'),
         ]);
 
-        $file = $request->file('gambar');
-        $tujuan_upload = 'data_file';
-
-        if ($request->hasFile('gambar')) {
+        if ($request->file('gambar')) {
             $file = $request->file('gambar');
-            $tujuan_upload = 'data_file';
+
             $nama_file = time() . "_" . $file->getClientOriginalName();
+
+            // isi dengan nama folder tempat kemana file diupload
+            $tujuan_upload = 'data_file';
             $file->move($tujuan_upload, $nama_file);
+            $tempatMakan->update(['gambar' => $nama_file]);
         }
 
-        if ($tempatMakan->gambar && file_exists($tujuan_upload . '/' . $tempatMakan->gambar)) {
-            unlink($tujuan_upload . '/' . $tempatMakan->gambar);
-        } else {
-            $gambar = $tempatMakan->gambar;
-            $tempatMakan->update(['gambar' => $gambar]);
-        }
+        // $file = $request->file('gambar');
+        // $tujuan_upload = 'data_file';
+
+        // if ($request->hasFile('gambar')) {
+        //     $file = $request->file('gambar');
+        //     $tujuan_upload = 'data_file';
+        //     $nama_file = time() . "_" . $file->getClientOriginalName();
+        //     $file->move($tujuan_upload, $nama_file);
+        // }
+
+        // if ($tempatMakan->gambar && file_exists($tujuan_upload . '/' . $tempatMakan->gambar)) {
+        //     unlink($tujuan_upload . '/' . $tempatMakan->gambar);
+        // } else {
+        //     $gambar = $tempatMakan->gambar;
+        //     $tempatMakan->update(['gambar' => $gambar]);
+        // }
+
+        // $rules =[
+        //     'nama' => 'required|max:255',
+        //     'jumlah' => 'required|numeric|max:255',   
+        //     'gambar'=> [File::types(["jpeg","png","jpg"])->max(1024)],//1 mb                     
+        // ];
+
+        // $validatedData = $request->validate($rules);
+
+
+        // if($request->file('gambar')){
+        //     if($request->oldImage){
+        //         Storage::delete($request->oldImage);
+        //     }
+        //     $validatedData['gambar'] = $request->file('gambar')->store('buku');
+        // }          
+
+        // Buku::where('id',$buku->id)->update($validatedData);        
+
+        // return redirect('/dashboard/buku')->with('success', 'buku berhasil ditambah');
 
         // Update field gambar dengan nama file yang baru
-        $tempatMakan->update(['gambar' => $nama_file]);
+        // $tempatMakan->update(['gambar' => $nama_file]);
 
-        return redirect()->route('admin.tempat.index')->with('success', 'Data tempat berhasil diupdate.');
+        return redirect()->route('admin.tempat.index')->with('success', 'Data tempat berhasil diupdate');
     }
 
     /**
@@ -148,7 +181,7 @@ class TempatController extends Controller
     public function destroy($id)
     {
         //
-        Tempat::where(  'id', $id)->delete();
-        return redirect()->route('admin.tempat.index');
+        Tempat::where('id', $id)->delete();
+        return redirect()->route('admin.tempat.index')->with('success', 'Data tempat berhasil dihapus');
     }
 }

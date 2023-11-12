@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\TempatController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,13 +57,29 @@ Route::get('/hapus_tempat/{id}', [TempatController::class, 'destroy'])->middlewa
 
 // 3. Menu Makanan
 // menampilkan halaman menu makanan (lihat data) --> blm fix controllernya blm
-Route::get('lihat_menu', [TempatController::class, 'show'])->middleware('auth');
-// menampilkan halaman tambah menu makanan (create data)
-Route::get('/tambah_menu', [MenuController::class, 'create'])->middleware('auth');
+Route::get('lihat_menu', [MenuController::class, 'index'])->middleware('auth')->name('admin.menu.index');
+// menampilkan halaman dan tambah menu makanan (create data)
+Route::get('/tambah_menu', [MenuController::class, 'tempatMakan'])->middleware('auth');
+Route::post('/tambah_menu', [MenuController::class, 'store'])->middleware('auth');
+
+// Halaman edit menu makanan
+Route::get('/edit_menu/{id}', [MenuController::class, 'edit'])->middleware('auth');
+Route::post('/edit_menu/{id}', [MenuController::class, 'update'])->middleware('auth');
+
+// hapus menu makanan
+Route::get('/hapus_menu/{id}', [MenuController::class, 'destroy'])->middleware('auth');
+
+// menghitung banyak data di database
 
 
 
-// HALAMAN USER (BLOM FIX)
-Route::get('/', function () {
-    return view('layouts.user');
-});
+
+// HALAMAN USER
+// halaman index
+Route::get('/', [UserController::class,'index']);
+// halaman lihat tempat makan
+Route::get('/products', [UserController::class,'showProduct']);
+// halaman detail tempat makan
+Route::get('/product-detail/{id}', [UserController::class,'showDetail']);
+
+Route::post('/products', [UserController::class,'search']);

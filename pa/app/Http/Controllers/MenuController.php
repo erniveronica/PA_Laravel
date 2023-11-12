@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use App\Models\Tempat;
 use Illuminate\Http\Request;
 
@@ -10,9 +11,27 @@ class MenuController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function tempatMakan()
+    {
+        $tempat = Tempat::all();
+        return view('admin.menu.create', ['tempat' => $tempat, 'user' => auth()->user()]);
+    }
+
     public function index()
     {
         //
+        $result = Menu::join('tempat', 'menu.tempat_id', '=', 'tempat.id')
+            ->select('menu.*', 'tempat.nama as nama_tempat')
+            ->get();
+
+        // return response()->json($result);
+
+
+        return view("admin.menu.index", [
+            'user' => auth()->user(),
+            'menu' => $result
+        ]);
     }
 
     /**
@@ -31,10 +50,19 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
-      
-        
+        $tempat = Tempat::where('nama', $request->input('namaTempatMakan'))->first();
+        $tempatId = $tempat->id;
 
+        $menu = new Menu([
+            'tempat_id' => $tempatId,
+            'admin_id' => auth()->user()->id,
+            'nama' => $request->input('nama'),
+            'harga' => $request->input('harga'),
+        ]);
+
+        $menu->save();
+
+        return redirect()->route("admin.menu.index")->with('success', 'Menu makanan berhasil ditambah');
     }
 
     /**
@@ -48,9 +76,20 @@ class MenuController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
+
+        // $menu = Menu::select('*')->where('id', $id)->get();
         //
+        $menu = Menu::join('tempat', 'menu.tempat_id', '=', 'tempat.id')
+            ->select('menu.*', 'tempat.nama as nama_tempat')
+            ->where('menu.id', $id)
+            ->get(); 
+
+        return view("admin.menu.edit", [
+            'user' => auth()->user(),
+            'menu' => $menu
+        ]);
     }
 
     /**
@@ -59,6 +98,14 @@ class MenuController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $menuMakan = Menu::findOrFail($id);
+
+        $menuMakan->update([ 
+            'nama' => $request->input('nama'),
+            'harga' => $request->input('harga'),
+        ]);
+        return redirect()->route('admin.menu.index')->with('success', 'Menu makanan berhasil diupdate');
+    
     }
 
     /**
@@ -67,5 +114,7 @@ class MenuController extends Controller
     public function destroy(string $id)
     {
         //
+        Menu::where('id', $id)->delete();
+        return redirect()->route('admin.menu.index')->with('success', 'Data tempat berhasil dihapus');
     }
 }

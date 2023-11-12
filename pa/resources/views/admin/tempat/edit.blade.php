@@ -70,7 +70,7 @@
                                         <div class="col">
                                             <label for="gambar" class="form-label">Foto Toko: </label>
                                             <input type="file" name="gambar" id="gambar" class="form-control"
-                                                value="data_file/{{ $item->gambar }}" accept=".png, .jpg">
+                                                accept=".png, .jpg">
                                         </div>
                                     </div>
 
