@@ -29,7 +29,6 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="alert"
                                         aria-label="Close"></button>
                                 </div>
-                                {{-- <div class="alert alert-success"> </div> --}}
                             @endif
 
                         </div>
@@ -41,8 +40,6 @@
                                 <th>Menu Makanan</th>
                                 <th>Harga</th>
                                 <th>Aksi</th>
-
-
                             </thead>
                             <tbody>
                                 @foreach ($menu as $item)
@@ -54,9 +51,30 @@
                                         <td> <a href="/edit_menu/{{ $item->id }}">
                                                 <button class="btn-primary rounded-2">Edit</button>
                                             </a>
-                                            <a href="/hapus_menu/{{ $item->id }}">
-                                                <button class="btn-danger  rounded-2">Hapus</button>
-                                            </a>
+                                            <div>
+                                                <button class="btn-danger rounded-2"
+                                                    onclick="confirmDelete()">Hapus</button>
+                                            </div>
+
+                                            <script>
+                                                function confirmDelete() {
+                                                    Swal.fire({
+                                                        title: 'Apakah Anda yakin ingin menghapus ini?',
+                                                        icon: 'warning',
+                                                        showCancelButton: true,
+                                                        confirmButtonColor: '#3085d6',
+                                                        cancelButtonColor: '#d33',
+                                                        confirmButtonText: 'Ya, Hapus!',
+                                                        cancelButtonText: 'Batal'
+                                                    }).then((result) => {
+                                                        if (result.isConfirmed) {
+                                                            // Jika pengguna mengonfirmasi, redirect ke halaman hapus
+                                                            window.location.href = "/hapus_menu/{{ $item->id }}";
+                                                        }
+                                                    });
+                                                }
+                                            </script>
+
                                         </td>
                                     </tr>
                                 @endforeach

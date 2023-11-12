@@ -39,11 +39,10 @@
                       <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
                         <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
                           <div class="card-title">
-                            <h5 class="text-nowrap mb-2">Tempat Makan Total Report</h5>
-                            <span class="badge bg-label-warning rounded-pill">Year 2023</span>
+                            <h5 class="text-nowrap mb-2">Total Tempat Makan</h5>
                           </div>
                           <div class="mt-sm-auto">
-                            <h3 class="mb-0">{{$dataTempat}} tempat makan</h3>
+                            <span class="badge bg-label-warning rounded-pill">{{$dataTempat}} tempat makan</span>
                           </div>
                         </div>
                       </div>
@@ -57,11 +56,10 @@
                       <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
                         <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
                           <div class="card-title">
-                            <h5 class="text-nowrap mb-2">Menu Makanan Total Report</h5>
-                            <span class="badge bg-label-warning rounded-pill">Year 2023</span>
+                            <h5 class="text-nowrap mb-2">Total Menu Makan</h5>
                           </div>
                           <div class="mt-sm-auto">
-                            <h3 class="mb-0">{{$dataMakan}} menu makanan</h3>
+                            <span class="badge bg-label-warning rounded-pill">{{$dataMakan}} menu makanan</span>
                           </div>
                         </div>
                       </div>
@@ -75,11 +73,10 @@
                       <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
                         <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
                           <div class="card-title">
-                            <h5 class="text-nowrap mb-2">Admin Total Report</h5>
-                            <span class="badge bg-label-warning rounded-pill">Year 2023</span>
+                            <h5 class="text-nowrap mb-2">Total Admin</h5>
                           </div>
                           <div class="mt-sm-auto">
-                            <h3 class="mb-0">{{$dataAdmin}} admin</h3>
+                            <span class="badge bg-label-warning rounded-pill">{{$dataAdmin}} admin</span>
                           </div>
                         </div>
                       </div>

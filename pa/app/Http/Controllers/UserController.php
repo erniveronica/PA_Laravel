@@ -13,10 +13,16 @@ class UserController extends Controller
     {
         $tempat = Tempat::get()->take(4);
 
-        return view('welcome', [
+        return view('index', [
             'tempat' => $tempat
         ]);
     }
+
+    public function about()
+    {
+        return view('about');
+    }
+    
     public function showProduct()
     {
         $tempat = Tempat::get();

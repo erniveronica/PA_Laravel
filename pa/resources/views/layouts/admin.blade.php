@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Samarinda Food Finder</title>
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="../assets/img/icon-1.png" />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -189,4 +189,6 @@
 <!-- Page JS -->
 <script src="../assets/js/dashboards-analytics.js"></script>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
+<!-- Alert-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </html>

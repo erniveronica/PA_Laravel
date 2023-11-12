@@ -34,7 +34,11 @@
                                 @endif
 
                                 @if (session('success'))
-                                    <div class="alert alert-success"> {{ session('success') }}</div>
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{ session('success') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
                                 @endif
 
                             </div>
@@ -60,7 +64,7 @@
                                                                     class="badge bg-label-secondary rounded-pill text-start">
                                                                     {{ $item->jam_buka }} - {{ $item->jam_tutup }}
                                                                 </span>
-                                                            
+
                                                             </div>
                                                             {{-- <p class="">Link Gmaps: {{ $item->link_maps }}</p> --}}
                                                             @if ($item->link_maps != null)
@@ -69,7 +73,7 @@
                                                             @else
                                                                 <div></div>
                                                             @endif
-                                                        
+
                                                             <p>{{ $item->kontak }}</p>
                                                             <p class="text-wrap">Dibuat pada: {{ $item->created_at }}</p>
                                                         </div>
@@ -81,10 +85,29 @@
                                                             </a>
                                                         </div>
                                                         <div>
-                                                            <a href="/hapus_tempat/{{ $item->id }}">
-                                                                <button class="btn-danger  rounded-2">Hapus</button>
-                                                            </a>
+                                                            <button class="btn-danger rounded-2"
+                                                                onclick="confirmDelete()">Hapus</button>
                                                         </div>
+
+                                                        <script>
+                                                            function confirmDelete() {
+                                                                Swal.fire({
+                                                                    title: 'Apakah Anda yakin ingin menghapus ini?',
+                                                                    icon: 'warning',
+                                                                    showCancelButton: true,
+                                                                    confirmButtonColor: '#3085d6',
+                                                                    cancelButtonColor: '#d33',
+                                                                    confirmButtonText: 'Ya, Hapus!',
+                                                                    cancelButtonText: 'Batal'
+                                                                }).then((result) => {
+                                                                    if (result.isConfirmed) {
+                                                                        // Jika pengguna mengonfirmasi, redirect ke halaman hapus
+                                                                        window.location.href = "/hapus_tempat/{{ $item->id }}";
+                                                                    }
+                                                                });
+                                                            }
+                                                        </script>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -93,33 +116,6 @@
 
                                 </div>
                             </div>
-
-                            {{-- <table class="table ">
-                                <thead>
-                                    <th>ID</th>
-                                    <th>Nama</th>
-                                    <th>Alamat</th>
-                                    <th>Jam Buka</th>
-                                    <th>Gambar</th>
-                                    <th>Link Gmaps</th>
-                                    <th>Kontak</th>
-
-                                </thead>
-                                <tbody>
-                                    @foreach ($tempat as $item)
-                                        <tr>
-                                            <td>{{ $item->id }}</td>
-                                            <td>{{ $item->nama }}</td>
-                                            <td>{{ $item->alamat }}</td>
-                                            <td>{{ $item->jam_buka }} - {{$item->jam_tutup}}</td>
-                                            <td>{{ $item->gambar }}</td>
-                                            <td>{{ $item->link_maps }}</td>
-                                            <td>{{ $item->kontak }}</td>
-                                        </tr>
-                                </tbody>
-                                @endforeach
-                            </table> --}}
-                            <div></div>
                         </div>
                     </div>
                 </div>

@@ -24,18 +24,15 @@
                             @endif
 
                             @if (session('success'))
-                                <div class="alert alert-success"> {{ session('success') }}</div>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
                             @endif
 
                             <form action="" method="POST" enctype="multipart/form-data">
                                 @csrf
-
-                                <div class="mb-3">
-                                    <label class="form-label" for="alamat">ID Tempat Makanan:</label>
-                                    <div class="input-group input-group-merge">
-                                        <input type="text" name="id" readonly disabled>
-                                    </div>
-                                </div>
 
                                 <div class="mb-3">
                                     <label class="form-label" for="nama">Nama Tempat Makan:</label>

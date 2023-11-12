@@ -40,7 +40,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::get('/dashboard', [AdminController::class, 'index'])->middleware('auth');
 
 // 2. Tempat Makanan
-// menampilkan halaman tempat makanan (lihat data) --> blm fix controllernya blm
+// menampilkan halaman tempat makanan (lihat data)
 Route::get('/lihat_tempat', [TempatController::class, 'index'])->name('admin.tempat.index');
 // menampilkan halaman tambah tempat makanan (create data)
 Route::get('/tambah_tempat', [TempatController::class, 'create'])->middleware('auth');
@@ -56,7 +56,7 @@ Route::get('/hapus_tempat/{id}', [TempatController::class, 'destroy'])->middlewa
 
 
 // 3. Menu Makanan
-// menampilkan halaman menu makanan (lihat data) --> blm fix controllernya blm
+// menampilkan halaman menu makanan (lihat data)
 Route::get('lihat_menu', [MenuController::class, 'index'])->middleware('auth')->name('admin.menu.index');
 // menampilkan halaman dan tambah menu makanan (create data)
 Route::get('/tambah_menu', [MenuController::class, 'tempatMakan'])->middleware('auth');
@@ -71,9 +71,6 @@ Route::get('/hapus_menu/{id}', [MenuController::class, 'destroy'])->middleware('
 
 // menghitung banyak data di database
 
-
-
-
 // HALAMAN USER
 // halaman index
 Route::get('/', [UserController::class,'index']);
@@ -81,5 +78,7 @@ Route::get('/', [UserController::class,'index']);
 Route::get('/products', [UserController::class,'showProduct']);
 // halaman detail tempat makan
 Route::get('/product-detail/{id}', [UserController::class,'showDetail']);
-
+//proses pencarian
 Route::post('/products', [UserController::class,'search']);
+Route::get('/tentang_kami', [UserController::class,'about']);
+
