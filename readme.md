@@ -19,7 +19,7 @@
 <p>Jika user scroll kebawah, akan ada tampilan tempat rekomendasi yang bisa user akses detailnya dengan menekan tombol <Strong>Lihat Tempat Makan Lainnya</Strong></p>
 <br>
 
-![Screenshot (252)](https://github.com/nomccc/PA_Laravel/assets/94788227/7e4f19fe-48d6-494b-b63e-bf2257a34a12)
+<img width="700" alt="Screenshot 2023-11-14 051656" src="https://github.com/erniveronica/PA_Laravel/assets/119858991/020f3f3c-b5f2-42ae-aa54-74e70270ce71">
 <p>Apabila tombol tersebut ditekan, user akan dialihkan ke halaman product yang berisi tempat. Terdapat juga fitur pencarian tempat makan yang diinginkan</p>
 <br>
 
@@ -34,11 +34,12 @@
 <p>Admin dapat memasukkan email dan password untuk masuk ke dalam dashboard admin </p>
 <br>
 
-![Screenshot (255)](https://github.com/nomccc/PA_Laravel/assets/94788227/5ccaf909-2f0e-4295-8d41-b7450045e528)
+<img width="7000" alt="dashboard" src="https://github.com/erniveronica/PA_Laravel/assets/119858991/7dc09484-f645-41cb-93c2-8dea7e5ad4e2">
 <p>Jika berhasil, admin akan disuguhkan oleh halaman dashboard yang menampilkan detail laporan berapa tempat makan dan menu makanan yang telah dimasukkan</p>
 <br>
 
-![Screenshot (256)](https://github.com/nomccc/PA_Laravel/assets/94788227/18d4c7c0-a8f5-4137-a594-b57d41ae4c3a)
+
+<img width="536" alt="lihat menu" src="https://github.com/erniveronica/PA_Laravel/assets/119858991/e9c07d94-b36e-439d-a61c-fea9d191652f">
 <p>Dibagian sidebar, admin dapat melakukan modifikasi data seputar tempat makan, admin, dan menu makanan. Pada gambar diatas adalah halaman lihat tempat makan yang telah diinput oleh admin. Admin dapat melakukan modifikasi data (edit) dan menghapus tempat makan pada halaman ini</p>
 <br>
 
