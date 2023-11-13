@@ -44,6 +44,9 @@
                           <div class="mt-sm-auto">
                             <span class="badge bg-label-warning rounded-pill">{{$dataTempat}} tempat makan</span>
                           </div>
+                          <div class="mt-3">
+                            <a class="text-body" href="/lihat_tempat"><i class="fa fa-eye text-primary me-2"></i>Lihat Detail</a>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -60,6 +63,9 @@
                           </div>
                           <div class="mt-sm-auto">
                             <span class="badge bg-label-warning rounded-pill">{{$dataMakan}} menu makanan</span>
+                          </div>
+                          <div class="mt-3">
+                            <a class="text-body" href="/lihat_menu"><i class="fa fa-eye text-primary me-2"></i>Lihat Detail</a>
                           </div>
                         </div>
                       </div>
@@ -78,7 +84,6 @@
                           <div class="mt-sm-auto">
                             <span class="badge bg-label-warning rounded-pill">{{$dataAdmin}} admin</span>
                           </div>
-                        </div>
                       </div>
                     </div>
                 </div>

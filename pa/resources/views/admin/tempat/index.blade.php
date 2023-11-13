@@ -9,7 +9,7 @@
                 <div class="col-xl">
                     <div class="card mb-4">
                         <div class="card-header text-center">
-                            <h2 class="mb-0">Lihat Data Tempat Makan</h2>
+                            <h2 class="mb-0">List Tempat Makan</h2>
                             {{-- </div class="row">
                         @foreach ($tempat as $item)
                             <div class="card col-6" style="width: 18rem;">

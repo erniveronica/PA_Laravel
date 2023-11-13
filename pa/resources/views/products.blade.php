@@ -36,9 +36,6 @@
                             <div class="position-relative bg-light overflow-hidden">
                                 <img width="100%" height="230" class=""
                                     src="/data_file/{{ $item->gambar }}" alt="">
-                                <div
-                                    class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                    New</div>
                             </div>
                             <div class="text-center p-4">
                                 <h2 class="d-block h5 mb-2" href="">{{ $item->nama }}</h2>
