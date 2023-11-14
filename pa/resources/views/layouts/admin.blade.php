@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Samarinda Food Finder</title>
+    <!-- Datatables -->
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../assets/img/icon-1.png" />
     <!-- Fonts -->
@@ -176,6 +178,16 @@
     <!-- / Layout wrapper -->
 
 </body>
+
+<!-- Page datatables -->
+<script src="../assets/js/app.js"></script>
+<!-- Datatables -->
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<!-- Alert-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 <!-- Core JS -->
 <script src="../assets/vendor/libs/jquery/jquery.js"></script>
 <script src="../assets/vendor/libs/popper/popper.js"></script>

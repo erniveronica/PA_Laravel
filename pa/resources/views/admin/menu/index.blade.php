@@ -32,59 +32,68 @@
                             @endif
 
                         </div>
+                        <div class="app-card-body p-3">
+                            <table id="datatablesSimple" class="table table-striped table-bordered">
+                                <thead>
+                                    <th>ID</th>
+                                    <th>Nama Tempat Makan</th>
+                                    <th>Menu Makanan</th>
+                                    <th>Harga</th>
+                                    <th>Aksi</th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($menu as $item)
+                                        <tr>
+                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->nama_tempat }}</td>
+                                            <td>{{ $item->nama }}</td>
+                                            <td>{{ $item->harga }}</td>
+                                            <td> <a href="/edit_menu/{{ $item->id }}">
+                                                    <button class="btn-primary rounded-2">Edit</button>
+                                                </a>
+                                                <div>
+                                                    <button class="btn-danger rounded-2"
+                                                        onclick="confirmDelete()">Hapus</button>
+                                                </div>
 
-                        <table class="table ">
-                            <thead>
-                                <th>ID</th>
-                                <th>Nama Tempat Makan</th>
-                                <th>Menu Makanan</th>
-                                <th>Harga</th>
-                                <th>Aksi</th>
-                            </thead>
-                            <tbody>
-                                @foreach ($menu as $item)
-                                    <tr>
-                                        <td>{{ $item->id }}</td>
-                                        <td>{{ $item->nama_tempat }}</td>
-                                        <td>{{ $item->nama }}</td>
-                                        <td>{{ $item->harga }}</td>
-                                        <td> <a href="/edit_menu/{{ $item->id }}">
-                                                <button class="btn-primary rounded-2">Edit</button>
-                                            </a>
-                                            <div>
-                                                <button class="btn-danger rounded-2"
-                                                    onclick="confirmDelete()">Hapus</button>
-                                            </div>
+                                                <script>
+                                                    function confirmDelete() {
+                                                        Swal.fire({
+                                                            title: 'Apakah Anda yakin ingin menghapus ini?',
+                                                            icon: 'warning',
+                                                            showCancelButton: true,
+                                                            confirmButtonColor: '#3085d6',
+                                                            cancelButtonColor: '#d33',
+                                                            confirmButtonText: 'Ya, Hapus!',
+                                                            cancelButtonText: 'Batal'
+                                                        }).then((result) => {
+                                                            if (result.isConfirmed) {
+                                                                // Jika pengguna mengonfirmasi, redirect ke halaman hapus
+                                                                window.location.href = "/hapus_menu/{{ $item->id }}";
+                                                            }
+                                                        });
+                                                    }
+                                                </script>
 
-                                            <script>
-                                                function confirmDelete() {
-                                                    Swal.fire({
-                                                        title: 'Apakah Anda yakin ingin menghapus ini?',
-                                                        icon: 'warning',
-                                                        showCancelButton: true,
-                                                        confirmButtonColor: '#3085d6',
-                                                        cancelButtonColor: '#d33',
-                                                        confirmButtonText: 'Ya, Hapus!',
-                                                        cancelButtonText: 'Batal'
-                                                    }).then((result) => {
-                                                        if (result.isConfirmed) {
-                                                            // Jika pengguna mengonfirmasi, redirect ke halaman hapus
-                                                            window.location.href = "/hapus_menu/{{ $item->id }}";
-                                                        }
-                                                    });
-                                                }
-                                            </script>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
 
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
         </div>
         <!-- / Content -->
     </div>
+
+<!-- Initialize DataTables -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    new simpleDatatables.DataTable('#datatablesSimple');
+});
+</script>
 
 @endsection

@@ -78,35 +78,40 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-
-        // $menu = Menu::select('*')->where('id', $id)->get();
-        //
         $menu = Menu::join('tempat', 'menu.tempat_id', '=', 'tempat.id')
             ->select('menu.*', 'tempat.nama as nama_tempat')
             ->where('menu.id', $id)
-            ->get(); 
+            ->get();
+
+        $tempat = Tempat::all();
 
         return view("admin.menu.edit", [
             'user' => auth()->user(),
-            'menu' => $menu
+            'menu' => $menu,
+            'tempat' => $tempat, // Add this line to pass the list of all places
         ]);
     }
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
         $menuMakan = Menu::findOrFail($id);
 
-        $menuMakan->update([ 
+        $tempat = Tempat::where('nama', $request->input('namaTempatMakan'))->first();
+        $tempatId = $tempat->id;
+
+        $menuMakan->update([
+            'tempat_id' => $tempatId,
             'nama' => $request->input('nama'),
             'harga' => $request->input('harga'),
         ]);
+
         return redirect()->route('admin.menu.index')->with('success', 'Menu makanan berhasil diupdate');
-    
     }
+
 
     /**
      * Remove the specified resource from storage.

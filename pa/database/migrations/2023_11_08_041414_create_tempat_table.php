@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('jam_buka');
             $table->string('jam_tutup');
             $table->string('gambar');
-            $table->string('link_maps');
-            $table->string('kontak');
+            $table->string('link_maps')->nullable();;
+            $table->string('kontak')->nullable();;
             $table->timestamps();
 
             $table->foreign('admin_id')-> references('id')->on('users')->onDelete('cascade');

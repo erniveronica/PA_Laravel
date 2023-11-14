@@ -10,20 +10,6 @@
                     <div class="card mb-4">
                         <div class="card-header text-center">
                             <h2 class="mb-0">List Tempat Makan</h2>
-                            {{-- </div class="row">
-                        @foreach ($tempat as $item)
-                            <div class="card col-6" style="width: 18rem;">
-                                <img src={{ $item->gambar }} class="card-img-top">
-                                <div class="card-body">
-                                    <h5 class="card-title fs-3">{{ $item->nama }}</h5>
-                                    <p class="card-text">Jam: {{ $item->jam_buka }} - {{ $item->jam_tutup }} </p>
-                                    <p class="card-text">Alamat: {{ $item->alamat }} </p>
-                                    <p class="card-text">Link Gmaps: {{ $item->link_maps }} </p>
-                                    <p class="card-text"><span class="fw-bold">Kontak:</span> {{ $item->kontak }} </p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                        @endforeach
-                    </div> --}}
                             <div class="card-body">
                                 @if ($errors->any())
                                     <div class="alert alert-danger" role="alert">

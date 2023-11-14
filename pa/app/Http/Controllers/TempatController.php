@@ -151,8 +151,8 @@ class TempatController extends Controller
 
         // $rules =[
         //     'nama' => 'required|max:255',
-        //     'jumlah' => 'required|numeric|max:255',   
-        //     'gambar'=> [File::types(["jpeg","png","jpg"])->max(1024)],//1 mb                     
+        //     'jumlah' => 'required|numeric|max:255',
+        //     'gambar'=> [File::types(["jpeg","png","jpg"])->max(1024)],//1 mb
         // ];
 
         // $validatedData = $request->validate($rules);
@@ -163,9 +163,9 @@ class TempatController extends Controller
         //         Storage::delete($request->oldImage);
         //     }
         //     $validatedData['gambar'] = $request->file('gambar')->store('buku');
-        // }          
+        // }
 
-        // Buku::where('id',$buku->id)->update($validatedData);        
+        // Buku::where('id',$buku->id)->update($validatedData);
 
         // return redirect('/dashboard/buku')->with('success', 'buku berhasil ditambah');
 

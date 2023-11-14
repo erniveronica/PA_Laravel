@@ -41,9 +41,12 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="alamat">Nama Tempat Makan:</label>
                                     <div class="input-group input-group-merge">
-                                        <select class="form-select" id="namaTempatMakan" name="namaTempatMakan"
-                                            required>
-                                            <option value="{{ $item->nama_tempat }}">{{ $item->nama_tempat }}</option>
+                                        <select class="form-select" id="namaTempatMakan" name="namaTempatMakan" required>
+                                            @foreach ($tempat as $tempatItem)
+                                                <option value="{{ $tempatItem->nama }}" {{ $tempatItem->nama == $item->nama_tempat ? 'selected' : '' }}>
+                                                    {{ $tempatItem->nama }}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>

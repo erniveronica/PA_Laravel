@@ -45,7 +45,7 @@
         </div>
 
         <div class="my-5">
-            <table class="table ">
+            <table id="datatablesSimple" class="table table-striped table-bordered">
                 <thead>
                     <th>Menu Makanan</th>
                     <th>Harga</th>
@@ -64,5 +64,11 @@
         @endif
     </div>
 </div>
+<!-- Initialize DataTables -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new simpleDatatables.DataTable('#datatablesSimple');
+    });
+    </script>
 <!-- Content End -->
 @endsection
